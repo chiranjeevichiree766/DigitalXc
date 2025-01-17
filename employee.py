@@ -3,6 +3,8 @@ import numpy as np
 import json
 import csv
 import os
+from datetime import datetime
+
 
 class SecretSanta:
     def __init__(self, employee_file, secret_santa_file):
@@ -64,6 +66,7 @@ class SecretSanta:
         """
         Save the Secret Santa assignments to a CSV file.
         """
+ 
         with open(output_file, mode='w', newline='') as file:
             writer = csv.DictWriter(file, fieldnames=self.secret_santa_assignments[0].keys())
             writer.writeheader()
@@ -89,12 +92,14 @@ if __name__ == "__main__":
     full_path = current_directory + child_path
     result = current_directory + result_path
 
-
+    timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+    outputcsv = f"secret_santa_{timestamp}.csv"
+    outputjson = f"secret_santa_{timestamp}.json"
     # Hardcode the file names
     file1 = "EmployeeList.xlsx"
     file2 = "Secret-Santa-Game-Result-2023.xlsx"
-    file3 = "secret_santa_assignments.csv"
-    file4 = "secret_santa_assignments.json"
+    file3 = outputcsv
+    file4 = outputjson
 
     # Define full file paths
     try:
@@ -114,7 +119,8 @@ if __name__ == "__main__":
         secret_santa.assign_secret_santa()
         secret_santa.save_to_csv(output_csv_file)
         secret_santa.save_to_json(output_json_file)
-        print("Secret Santa process completed successfully!")
+        print(f"The file has been successfully finished. Storage location: Result/{file3}")
+        print(f"The file has been successfully finished. Storage location:: Result/{file4}")
     except FileNotFoundError as e:
         print(f"Error: {e}")
     except Exception as e:
