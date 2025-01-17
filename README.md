@@ -23,7 +23,7 @@ Before running the program, make sure the following dependencies are installed:
 
 You can install the required dependencies using pip:
 
-pip install pandas numpy openpyxl
+**pip install pandas numpy openpyxl**
 
 **File Structure**
 
