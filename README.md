@@ -64,7 +64,7 @@ Step 2: Place Files in Correct Directories
 Step 3: Run the Program
     You can execute the program by running the following command in your terminal:
 
-    python employee.py
+    python3 employee.py
 
 This will:
 
