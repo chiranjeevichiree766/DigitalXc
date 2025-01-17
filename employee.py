@@ -98,7 +98,8 @@ if __name__ == "__main__":
 
     # Define full file paths
     try:
-
+        if not os.path.exists(result):
+           os.makedirs(result)
         employee_file_path = os.path.join(full_path, file1)
         secret_santa_file_path = os.path.join(full_path, file2)
         output_csv_file = os.path.join(result, file3)
